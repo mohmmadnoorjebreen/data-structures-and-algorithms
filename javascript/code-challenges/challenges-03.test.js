@@ -9,7 +9,7 @@ Write a function called addTwo that takes in an array and adds two to every valu
 const addTwo = (arr) => {
   let newArr =[];
   for (let i = 0; i < arr.length; i++) {
-    
+
     newArr.push(arr[i] +2);
   }
   return newArr;
@@ -25,10 +25,10 @@ For example, typeNum([1, 'bob' ,3]) returns [1,3].
 
 const typeNum = (arr) => {
   const newArr = arr.filter(value => {
-     if (typeof value == 'number') {
+    if (typeof value === 'number') {
       return value;
     }
-  })
+  });
   return newArr;
 };
 
@@ -43,10 +43,10 @@ For example, containsAnd(['panda', 'ran', 'and']) returns ['panda', 'and'].
 const containsAnd = (arr) => {
   const newArr = arr.filter(value => {
     if (value.includes('and')) {
-     return value;
-   }
- })
- return newArr;
+      return value;
+    }
+  });
+  return newArr;
 };
 
 /* ------------------------------------------------------------------------------------------------
@@ -60,10 +60,10 @@ For example, oddValues([1,2,3]) returns [1,3].
 const oddValues = (arr) => {
   const newArr = arr.filter(value => {
     if (value % 2 !== 0) {
-     return value;
-   }
- })
- return newArr;
+      return value;
+    }
+  });
+  return newArr;
 };
 
 /* ------------------------------------------------------------------------------------------------
@@ -76,8 +76,8 @@ For example, notInFirstArray([1,2,3], [1,2,3,4]) returns [4].
 
 const notInFirstArray = (forbiddenValues, arr) => {
   const newArr = arr.filter(value => forbiddenValues.indexOf(value) === -1);
- 
- return newArr;
+
+  return newArr;
 };
 
 /* ------------------------------------------------------------------------------------------------
@@ -120,7 +120,12 @@ const snorlaxData = {
 };
 
 const getBaseStatGreaterThan = (arr, minBaseStat) => {
-  // Solution code here...
+  const newArr = arr.filter((value)=>{
+    if (value.baseStat > minBaseStat) {
+      return value;
+    }
+  });
+  return newArr;
 };
 
 /* ------------------------------------------------------------------------------------------------
@@ -132,7 +137,12 @@ For example, getStatName(snorlaxData.stats, 50) will return ['special-defense', 
 ------------------------------------------------------------------------------------------------ */
 
 const getStatName = (arr, minBaseStat) => {
-  // Solution code here...
+  const newArr = arr.filter((value)=>{
+    if (value.baseStat > minBaseStat) {
+      return value.stat.name;
+    }
+  });
+  return newArr;
 };
 
 /* ------------------------------------------------------------------------------------------------
@@ -185,7 +195,12 @@ const characters = [
 ];
 
 const getCharactersWithoutChildren = (arr) => {
-  // Solution code here...
+  const newArr = arr.filter((value)=>{
+    if (!value.children) {
+      return value;
+    }
+  });
+  return newArr;
 };
 
 /* ------------------------------------------------------------------------------------------------
@@ -197,7 +212,18 @@ For example: evenOddNumericValues(['Gregor', 2, 4, 1]) returns ['even', 'even', 
 ------------------------------------------------------------------------------------------------ */
 
 const evenOddNumericValues = (arr) => {
-  // Solution code here...
+  let newArr = arr.filter((value)=>{
+    if (Number) {
+      return value;
+    }
+
+  });
+  const newArras= newArr.map((value)=>{
+    if (value % 2 ===0) {
+      return 'even';
+    } else return 'odd';
+  });
+  return newArras;
 };
 
 /* ------------------------------------------------------------------------------------------------
