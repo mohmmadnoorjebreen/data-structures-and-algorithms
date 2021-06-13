@@ -12,7 +12,7 @@ const addOne = (arr) => {
   const numberArr = [];
   arr.forEach((value) => {
     numberArr.push(value +1);
-  } )
+  } );
   return numberArr;
 };
 
@@ -27,7 +27,7 @@ Use `forEach` to loop over the input array. Modify each string, and add the upda
 const addExclamation = (arr) => {
   const newNAME = [];
   arr.forEach(value => {
-    newNAME.push(`${value}!`)
+    newNAME.push(`${value}!`);
   });
   return newNAME;
 };
@@ -53,9 +53,9 @@ CHALLENGE 4
 
 Write a function named `greeting` that takes in a single string and returns the string in all uppercase letters, and followed by an "!".
 
-Then, write a function named `speaker` that takes in an array of strings and a callback function. 
+Then, write a function named `speaker` that takes in an array of strings and a callback function.
 
-Use `forEach` to build a new array of strings, each string modified by the callback. Return the new array. 
+Use `forEach` to build a new array of strings, each string modified by the callback. Return the new array.
 ------------------------------------------------------------------------------------------------ */
 
 const greeting = (word) => {
@@ -88,20 +88,20 @@ Return the modified array.
 ------------------------------------------------------------------------------------------------ */
 
 const addValues = (arr, value) => {
- arr.push(value);
+  arr.push(value);
 };
 
 const addNumbers = (num, arr, times, callback) => {
 
   while(arr.length < times) {
-      callback(arr,num);
+    callback(arr,num);
 
   }
- 
 
-    
 
-return arr;
+
+
+  return arr;
 };
 
 /* ------------------------------------------------------------------------------------------------
@@ -123,15 +123,15 @@ This function should use forEach to populate your grocery list based on the stor
 ------------------------------------------------------------------------------------------------ */
 
 const createList = (availableItems) => {
- const availables = [];
+  const availables = [];
 
   availableItems.forEach(element => {
     if (element.available === true) {
-      availables.push(element.name)
+      availables.push(element.name);
     }
   });
 
-return availables;
+  return availables;
 };
 
 /* ------------------------------------------------------------------------------------------------
@@ -149,7 +149,20 @@ Return the resulting output array.
 ------------------------------------------------------------------------------------------------ */
 
 const fizzbuzz = (arr) => {
+  let array = [];
 
+  arr.forEach(element => {
+    if (element % 3 === 0 && element % 5 !== 0 ) {
+      array.push('Fizz');
+    } else if (element % 5 === 0 && element % 3 !== 0) {
+      array.push('Buzz');
+    } else if (element % 5 === 0 && element % 3 === 0) {
+      array.push('Fizz Buzz');
+    } else {
+      array.push(element);
+    }
+  });
+  return array ;
 };
 
 /* ------------------------------------------------------------------------------------------------
@@ -203,7 +216,7 @@ describe('Testing challenge 6', () => {
   });
 });
 
-xdescribe('Testing challenge 7', () => {
+describe('Testing challenge 7', () => {
   const inputs = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16];
 
   test('It should print out messages or numbers', () => {
