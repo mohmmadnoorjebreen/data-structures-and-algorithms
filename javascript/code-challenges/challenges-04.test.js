@@ -125,8 +125,8 @@ For example, ['Alphabet', 'alphabet', 'carrot', 'Zebra'] is correctly sorted, an
 const alphabetizeBetter = (arr) => {
 
   arr.sort((a,b) => {
-    if (a.toLocaleLowerCase() > b.toLocaleLowerCase()) {
-      return 1;
+    if (a.toLowerCase() < b.toLowerCase()) {
+      return -1;
     }
   });
 
@@ -180,7 +180,7 @@ const people = [
 ];
 
 const sortPeople = (arr) => {
-  arr.sort((a,b)=>a.lastName.toLocaleLowerCase() -b.lastName.toLocaleLowerCase() );
+  arr.sort((a,b)=>a.lastName.toLocaleLowerCase() - b.lastName.toLocaleLowerCase() );
   return arr;
 };
 
@@ -196,17 +196,24 @@ const sortPeople = (arr) => {
 
 const sortPeopleBetter = (arr) => {
   arr.sort((a,b)=>{
-    if (a.lastName === b.lastName) {
-      console.log(a.lastName );
-      console.log(b.lastName);
-      return a.firstName - b.firstName;
+    if ((a.lastName.toLowerCase() === b.lastName.toLowerCase()) && a.firstName.toLowerCase() === b.firstName.toLowerCase()) {
+      if (a.age < b.age) {
+        return -1;
+      }
     }
-    if (a.lastName === b.lastName && (a.firstName === b.firstName)) {
-      return a.age -b.age;
-    }
+    else if (a.lastName.toLowerCase() === b.lastName.toLowerCase()) {
+      if (a.firstName.toLowerCase() < b.firstName.toLowerCase()) {
+        return -1;
+      }
+    } else {if (a.lastName.toLowerCase() < b.lastName.toLowerCase()) {
+      return -1;
+    }}
+
   });
   return arr;
 };
+
+
 
 /* ------------------------------------------------------------------------------------------------
   CHALLENGE 12 - Stretch Goal
@@ -256,7 +263,7 @@ const sortMeetingsByDay = (arr) => {
 const sortSchedule = (arr) => {
   arr.sort((a, b) => {
     if (a.start !== b.start) {
-      return a-b;
+      return a.start-b.start;
     } else {return a.end - b.end;}
 
   });
@@ -333,7 +340,7 @@ describe('Testing challenge 6', () => {
   });
 });
 
-xdescribe('Testing challenge 7', () => {
+describe('Testing challenge 7', () => {
   test('It should alphabetize without regard to capitalization', () => {
     expect(alphabetizeBetter(['Alice', 'apple', 'alert', 'Average'])).toStrictEqual(['alert', 'Alice', 'apple', 'Average']);
     const ans = alphabetizeBetter(['alphabet', 'Zebra', 'Alphabet', 'carrot']);
@@ -342,7 +349,7 @@ xdescribe('Testing challenge 7', () => {
   });
 });
 
-xdescribe('Testing challenge 8', () => {
+describe('Testing challenge 8', () => {
   test('It should sort strings by length', () => {
     const ans = sortByLength(['alphabet', 'Zebra', 'Alphabet', 'carrot']);
     expect(ans.slice(0, 2)).toStrictEqual(['Zebra', 'carrot']);
@@ -353,7 +360,7 @@ xdescribe('Testing challenge 8', () => {
   });
 });
 
-xdescribe('Testing challenge 9', () => {
+describe('Testing challenge 9', () => {
   test('It should sort numbers by their length', () => {
     expect(sortNumbersByLength([10, 2.8, 1, -47.75])).toStrictEqual([1, 10, 2.8, -47.75]);
     expect(sortNumbersByLength([100, 2.82, 1, -47.75])).toStrictEqual([1, 100, 2.82, -47.75]);
@@ -361,7 +368,7 @@ xdescribe('Testing challenge 9', () => {
   });
 });
 
-xdescribe('Testing challenge 10', () => {
+describe('Testing challenge 10', () => {
   test('It should sort people by their last names', () => {
     expect(sortPeople(people)).toStrictEqual([
       new Person('Casey', 'Codefellow', 38),
@@ -373,7 +380,7 @@ xdescribe('Testing challenge 10', () => {
   });
 });
 
-xdescribe('Testing challenge 11', () => {
+describe('Testing challenge 11', () => {
   test('It should sort people with more strict ordering', () => {
     const family = [
       new Person('Casey', 'Codefellows', 55),
@@ -394,7 +401,7 @@ xdescribe('Testing challenge 11', () => {
   });
 });
 
-xdescribe('Testing challenge 12', () => {
+describe('Testing challenge 12', () => {
   test('It should sort meetings by the day on which they happen', () => {
     const sortedMeetings = sortMeetingsByDay(meetings);
     expect(sortedMeetings.slice(0, 2)).toEqual(expect.arrayContaining([new Meeting('Monday', '0900', '0945'), new Meeting('Monday', '0900', '1000')]));
@@ -404,7 +411,7 @@ xdescribe('Testing challenge 12', () => {
   });
 });
 
-xdescribe('Testing challenge 13', () => {
+describe('Testing challenge 13', () => {
   test('It should sort meetings by when they happen', () => {
     expect(sortSchedule(meetings)).toStrictEqual([
       new Meeting('Monday', '0900', '0945'),
