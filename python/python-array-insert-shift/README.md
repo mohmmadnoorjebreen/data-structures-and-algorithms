@@ -6,7 +6,7 @@ be in the middle of the original list,
 in the end you should have a new list
 
 ## Whiteboard Process
-![insert](list_insert.PNG)
+![insert](array-insert-shift.PNG)
 
 ## Approach & Efficiency
  <!-- What approach did you take? Discuss Why. -->
