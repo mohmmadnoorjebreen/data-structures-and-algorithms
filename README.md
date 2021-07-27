@@ -26,3 +26,5 @@ To run your tests
 | ------ | ---- |
 | 01     | [array-reverse](https://mohmmadnoorjebreen.github.io/data-structures-and-algorithms/python/python-array-revers/)|
 | 02     | [math-series](https://github.com/mohmmadnoorjebreen/data-structures-and-algorithms/pull/17)|
+| 03     | [array-binary-search](https://github.com/mohmmadnoorjebreen/data-structures-and-algorithms/pull/18)|
+
