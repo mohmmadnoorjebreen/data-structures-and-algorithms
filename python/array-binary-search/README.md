@@ -6,7 +6,7 @@ have to know if there is a certain
 element inside it or not
 
 ## Whiteboard Process
-![](array-binary-search.PNG)
+![](array-binary-search.jpg)
 
 ## Approach & Efficiency
 What approach did you take? Discuss Why
@@ -17,4 +17,7 @@ What is the Big O space/time for this approach?
 
 Big O time = O(n)
 Big O space = O(1)
+
+
+
 
