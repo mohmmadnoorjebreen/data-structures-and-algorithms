@@ -1,6 +1,6 @@
 # Challenge Summary
 create a function that have tow
-parameters like a linked list and zip them
+parameters linked list and zip them
 ## Whiteboard Process
 ![](linked_list_zip.jpg)
 
