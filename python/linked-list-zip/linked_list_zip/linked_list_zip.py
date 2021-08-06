@@ -26,19 +26,53 @@ class Linked_List:
         string += 'NULL'
         return string
 
-def zipLists(x,y):
-    currants_x = x.head
-    currants_y = y.head
+def zipLists(l1,l2):
+    first = l1.head
+    second = l2.head
 
-    while currants_y :
-        currants_x.next.next = currants_y.next
-        currants_y.next = currants_x.next
-        currants_x.next = currants_y
-        break
+    if not first :
+      return l2
+    if not second :
+      return l1
 
-    return currants_x.next.next.next.data
+    while first and second:
+        if second:
+            save_first = first.next
+            first.next = second
+            first = save_first
+        if first:
+            save_second = second.next
+            second.next = first
+            second = save_second
+
+    return l1
 
 
 
 
+if __name__ == '__main__':
+    # x = Linked_List()
+    # x.insert(1)
+    # x.insert(2)
+    # x.insert(3)
+    # x.insert(4)
+
+    # y = Linked_List()
+
+    # y.insert(5)
+    # # y.insert(6)
+    # # y.insert(7)
+    # # print(x)
+    # # print(y)
+    # # print(zipLists(x,y))
+    # d = Linked_List()
+    # d.insert(0)
+    # d.insert(1)
+    # d.insert(2)
+    # d.insert(3)
+    # c = Linked_List()
+    # c.insert(4)
+    # c.insert(5)
+    # print(zipLists(d,c))
+    print('work')
 
