@@ -31,19 +31,22 @@ class BinaryTree:
         crr = self.root
         data = []
         data.append(crr)
-        max_num =[]
+        self.max = self.root.value
         while len(data) !=0:
             crr = data.pop()
 
             if crr.left:
                 data.append(crr.left)
-                max_num.append(crr.left.value)
+                if crr.left.value > self.max:
+                    self.max = crr.left.value
+
 
             if crr.right :
                 data.append(crr.right)
-                max_num.append(crr.right.value)
+                if crr.right.value > self.max:
+                    self.max = crr.right.value
 
-        return max(max_num)
+        return self.max
 
 
 
@@ -51,8 +54,8 @@ class BinaryTree:
 if __name__ == '__main__':
     print('good')
     x = BinaryTree()
-    x.insert(111)
-    x.insert(666)
-    x.insert(10000)
+    x.insert(1111111111111)
+    x.insert(444444444444444)
+    x.insert(4233333333333333)
     print(x.max_num())
 
