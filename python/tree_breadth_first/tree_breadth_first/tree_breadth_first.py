@@ -10,20 +10,20 @@ class BinaryTree:
 
     def __init__(self):
         self.root = None
-        self.list_value = []
 
 
-    def breadth_first(self):
 
-        if self.root == None:
+def breadth_first(root):
+        if root == None:
             raise Exception('no value')
-        crr = self.root
+        list_value = []
+        crr = root
         data = []
         data.append(crr)
 
         while len(data) !=0:
             crr = data.pop(0)
-            self.list_value.append(crr.value)
+            list_value.append(crr.value)
 
             if crr.left:
                 data.append(crr.left)
@@ -31,7 +31,7 @@ class BinaryTree:
             if crr.right :
                 data.append(crr.right)
 
-        return self.list_value
+        return list_value
 
 
 
