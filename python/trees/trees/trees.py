@@ -29,41 +29,48 @@ class BinaryTree:
             self.root.right = node
 
     def pre_order(self,root):
+        self.string_pre = ''
 
+        def order(root):
+            self.string_pre += f'{root.value}>'
 
-        self.string_pre += f'{root.value}>'
+            if root.left:
+                order(root.left)
 
-        if root.left:
-            self.pre_order(root.left)
+            if root.right:
+                order(root.right)
 
-        if root.right:
-            self.pre_order(root.right)
+        order(root)
         return self.string_pre
 
     def in_order(self,root):
+        self.string_in = ''
 
-        if root.left:
-            self.in_order(root.left)
+        def order_in(root):
+            if root.left:
+                order_in(root.left)
 
+            self.string_in += f'{root.value}>'
 
-        self.string_in += f'{root.value}>'
-
-        if root.right:
-            self.in_order(root.right)
+            if root.right:
+                order_in(root.right)
+        order_in(root)
         return self.string_in
 
     def post_order(self,root):
+        self.string_post = ''
 
-        if root.left:
-            self.post_order(root.left)
+        def order(root):
+            if root.left:
+                order(root.left)
 
-        if root.right:
-            self.post_order(root.right)
+            if root.right:
+                order(root.right)
 
 
-        self.string_post += f'{root.value}>'
+            self.string_post += f'{root.value}>'
+        order(root)
         return self.string_post
-
 
 
 class BinarySearchTree(BinaryTree):
@@ -92,7 +99,7 @@ class BinarySearchTree(BinaryTree):
                     break
 
 
-                
+
     def contains(self,value):
         if not self.root:
             raise Exception('empty tree')
@@ -113,7 +120,25 @@ class BinarySearchTree(BinaryTree):
                     return False
 
 
+if __name__ == '__main__':
+    tree = BinarySearchTree()
+    node = Node('A')
+    tree.root = node
+    tree.root.left=Node('B')
+    tree.root.left.left=Node('D')
+    tree.root.left.right=Node('E')
+    tree.root.right=Node('C')
+    tree.root.right.left=Node('F')
 
+    print(tree.pre_order(tree.root))
+    print('A, B, D, E, C, F')
+    print('----------------------------')
+    print(tree.in_order(tree.root))
+    print('D, B, E, A, F, C')
+    print('----------------------------')
+    print(tree.post_order(tree.root))
+    print('D, E, B, F, C, A')
+    print('----------------------------')
 
 
 
