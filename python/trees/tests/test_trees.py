@@ -31,30 +31,30 @@ def test_add_a_left_child_and_right_child_to_a_single_root_node():
     assert actual_left == excepted_left and actual_right == excepted_right
 
 
-def test_return_a_collection_from_a_preorder_traversal():
+def test_return_a_collection_from_a_pre_order_traversal():
     tree = BinarySearchTree()
-    tree.add(6)
-    tree.add(5)
-    tree.add(10)
+    tree.insert(6)
+    tree.insert(5)
+    tree.insert(10)
     excepted = '6>5>10>'
     actual = tree.pre_order(tree.root)
     assert excepted == actual
 
-def test_return_a_collection_from_an_inorder_traversal():
+def test_return_a_collection_from_an_in_order_traversal():
     tree = BinarySearchTree()
-    tree.add(6)
-    tree.add(5)
-    tree.add(10)
+    tree.insert(6)
+    tree.insert(5)
+    tree.insert(10)
     excepted = '5>6>10>'
     actual = tree.in_order(tree.root)
     assert excepted == actual
 
 
-def test_return_a_collection_from_a_postorder_traversal():
+def test_return_a_collection_from_a_post_order_traversal():
     tree = BinarySearchTree()
-    tree.add(6)
-    tree.add(5)
-    tree.add(10)
+    tree.insert(6)
+    tree.insert(5)
+    tree.insert(10)
     excepted = '5>10>6>'
     actual = tree.post_order(tree.root)
     assert excepted == actual
