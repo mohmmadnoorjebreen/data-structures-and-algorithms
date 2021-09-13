@@ -1,3 +1,5 @@
+
+from .queue import *
 class Vertices:
     def __init__(self, data):
         self.data = data
@@ -37,13 +39,21 @@ class Graph:
     def size(self):
       return len(self.graph)
 
+    def breadth_first(self,vertex):
+     nodes =  list()
+     breadth =  Queue()
+     visited =  set()
 
+     breadth.enqueue(vertex)
+     visited.append(vertex)
 
-if __name__ == '__main__':
-  graph = Graph()
-  v1 = graph.add_vertices(9)
-  v2 = graph.add_vertices(5)
-  v3 = graph.add_vertices(3)
-  graph.add_edge(v1, v2)
-  print(graph.get_nodes)
-  print(graph.get_neighbors)
+     while breadth:
+         front = breadth.dequeue()
+         nodes.append(front)
+
+         for child in self.graph.get(front):
+            if(child not in visited):
+                visited.append(child)
+                breadth.enqueue(child)
+
+     return nodes
