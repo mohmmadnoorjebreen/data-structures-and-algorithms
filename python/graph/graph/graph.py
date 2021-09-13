@@ -1,49 +1,49 @@
-class Node:
+class Vertices:
     def __init__(self, data):
-        self.vertex = data
-        self.next = None
+        self.data = data
 
+    def __str__(self):
+      return self.data
+
+class Edge:
+  def __init__(self,vertices ,weight=1):
+        self.vertices = vertices
+        self.weight = weight
 class Graph:
     def __init__(self ):
         self.graph = {}
 
-    def add_node(self, vertices):
-      node = Node(vertices)
-      self.graph[node.vertex] = []
-
+    def add_vertices(self, value):
+      node = Vertices(value)
+      self.graph[node] = []
+      return node
 
     def add_edge(self, v1, v2,weight = 1):
         if v1 in self.graph and v2 in self.graph:
-          node = Node(v2)
-          node.next = self.graph[v1]
-          value = self.graph.get(v1)
-          value.append([node,weight])
-          self.graph[v1] = value
-          node = Node(v1)
-          node.next = self.graph[v2]
-          value = self.graph.get(v2)
-          value.append([node,weight])
-          self.graph[v2] = value
+          edge1 = Edge(v2,weight)
+          self.graph[v1].append(edge1)
+
+          edge2= Edge(v1,weight)
+          self.graph[v2].append(edge2)
+
 
     def get_nodes(self):
-      nodes = []
-      for node in self.graph.keys():
-        nodes.append(node)
-      if nodes == [] :
-        return None
-      return nodes
+      return self.graph.keys()
 
     def get_neighbors(self, node):
-      neighbors = []
-      for value in self.graph.get(node):
-        neighbors.append([value[0].vertex,value[1]])
-      return neighbors
+
+      return self.graph.get(node,[])
 
     def size(self):
-      num = 0
-      for _ in self.graph.keys():
-        num += 1
-      return num
+      return len(self.graph)
 
 
 
+if __name__ == '__main__':
+  graph = Graph()
+  v1 = graph.add_vertices(9)
+  v2 = graph.add_vertices(5)
+  v3 = graph.add_vertices(3)
+  graph.add_edge(v1, v2)
+  print(graph.get_nodes)
+  print(graph.get_neighbors)
